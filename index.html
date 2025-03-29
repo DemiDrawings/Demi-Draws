@@ -3,66 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demis Aleeb's Portfolio</title>
+    <title>Demis Aleeb - Portfolio</title>
     <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
 </head>
 <body>
-    <header>
-        <div class="navbar">
-            <h1>Demis Aleeb - Concept Art Portfolio</h1>
-            <nav>
-                <ul>
-                    <li><a href="#gallery">Gallery</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <section id="gallery">
-        <h2>Gallery</h2>
-        <div class="gallery-container">
-            <!-- Image Cards -->
-            <div class="card">
-                <img src="image1.jpg" alt="Artwork 1">
-                <div class="overlay">
-                    <h3>Artwork Title 1</h3>
-                    <p>Description of Artwork 1</p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="image2.jpg" alt="Artwork 2">
-                <div class="overlay">
-                    <h3>Artwork Title 2</h3>
-                    <p>Description of Artwork 2</p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="image3.jpg" alt="Artwork 3">
-                <div class="overlay">
-                    <h3>Artwork Title 3</h3>
-                    <p>Description of Artwork 3</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="about">
-        <h2>About Me</h2>
-        <p>I am a concept artist specializing in character design, environments, and storytelling. I draw inspiration from cyberpunk, dystopian, and futuristic themes.</p>
-    </section>
-
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>Feel free to reach out to me for freelance work or inquiries:</p>
-        <p>Email: <a href="mailto:your-email@example.com">your-email@example.com</a></p>
-    </section>
-
-    <footer>
-        <p>&copy; 2025 Demis Aleeb - All Rights Reserved</p>
-    </footer>
-
-    <script src="scripts.js"></script>
+    <div id="preloader">
+        <video id="logoVideo" autoplay muted>
+            <source src="your-logo-video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    
+    <div id="main-content" class="hidden">
+        <nav class="cyber-nav">
+            <ul>
+                <li><a href="#concept-art">Concept Art</a></li>
+                <li><a href="#illustration">Illustration</a></li>
+                <li><a href="#graphic-design">Graphic Design</a></li>
+                <li><a href="#about-me">About Me</a></li>
+            </ul>
+        </nav>
+        
+        <header>
+            <h1>Welcome to Demis Aleeb's Portfolio</h1>
+        </header>
+        
+        <section id="concept-art">
+            <h2>Concept Art</h2>
+            <p>Showcase of my latest concept art projects.</p>
+        </section>
+        
+        <section id="illustration">
+            <h2>Illustration</h2>
+            <p>My illustration works.</p>
+        </section>
+        
+        <section id="graphic-design">
+            <h2>Graphic Design</h2>
+            <p>My graphic design portfolio.</p>
+        </section>
+        
+        <section id="about-me">
+            <h2>About Me</h2>
+            <p>Information about my background and passion for art.</p>
+        </section>
+    </div>
 </body>
 </html>
+
