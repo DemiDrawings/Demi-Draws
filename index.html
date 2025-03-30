@@ -1,62 +1,82 @@
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { Tabs, Tab } from "@/components/ui/tabs";
-import { Button } from "@/components/ui/button";
-
-const sections = ["About", "Concept Art", "Illustration", "Projects"];
-
-export default function Portfolio() {
-  const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState("About");
-
-  useEffect(() => {
-    setTimeout(() => setLoading(false), 5000); // 5-second intro
-  }, []);
-
-  return (
-    <div className="w-full min-h-screen flex flex-col items-center bg-gray-900 text-white">
-      {loading ? (
-        <video className="w-full h-screen object-cover" autoPlay muted>
-          <source src="/logo_intro.mp4" type="video/mp4" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            color: white;
+            margin: 0;
+            text-align: center;
+        }
+        nav {
+            background-color: #222;
+            padding: 10px;
+        }
+        nav button {
+            background: #444;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        nav button.active {
+            background: white;
+            color: black;
+        }
+        .gallery img {
+            width: 100%;
+            max-width: 300px;
+            margin: 10px;
+            border-radius: 8px;
+        }
+        #intro {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="intro">
+        <video id="introVideo" width="100%" autoplay muted>
+            <source src="logo_intro.mp4" type="video/mp4">
         </video>
-      ) : (
-        <>
-          <nav className="w-full p-4 bg-gray-800 flex justify-center gap-4">
-            {sections.map((section) => (
-              <Button 
-                key={section} 
-                variant={activeTab === section ? "default" : "outline"} 
-                onClick={() => setActiveTab(section)}
-              >
-                {section}
-              </Button>
-            ))}
-          </nav>
-          <div className="p-8 w-full max-w-4xl">
-            {activeTab === "About" && <p className="text-lg">Your About Section Content Here</p>}
-            {activeTab === "Concept Art" && <Gallery title="Concept Art" images={[]} />}
-            {activeTab === "Illustration" && <Gallery title="Illustration" images={[]} />}
-            {activeTab === "Projects" && <Gallery title="Projects" images={[]} />}
-          </div>
-        </>
-      )}
     </div>
-  );
-}
-
-function Gallery({ title, images }) {
-  return (
-    <div>
-      <h2 className="text-2xl font-bold mb-4">{title}</h2>
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-        {images.length > 0 ? (
-          images.map((img, idx) => (
-            <img key={idx} src={img} alt={`Artwork ${idx + 1}`} className="w-full rounded-lg" />
-          ))
-        ) : (
-          <p>No images yet. Add your art!</p>
-        )}
-      </div>
-    </div>
-  );
-}
+    
+    <nav>
+        <button class="tab" onclick="showTab('about')">About</button>
+        <button class="tab" onclick="showTab('concept')">Concept Art</button>
+        <button class="tab" onclick="showTab('illustration')">Illustration</button>
+        <button class="tab" onclick="showTab('projects')">Projects</button>
+    </nav>
+    
+    <div id="about" class="content">Welcome to my portfolio! Add your bio here.</div>
+    <div id="concept" class="content" style="display: none;"> <div class="gallery"></div> </div>
+    <div id="illustration" class="content" style="display: none;"> <div class="gallery"></div> </div>
+    <div id="projects" class="content" style="display: none;"> <div class="gallery"></div> </div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(() => {
+                document.getElementById("intro").style.display = "none";
+            }, 5000);
+        });
+        
+        function showTab(tabName) {
+            document.querySelectorAll(".content").forEach(div => div.style.display = "none");
+            document.getElementById(tabName).style.display = "block";
+            document.querySelectorAll(".tab").forEach(btn => btn.classList.remove("active"));
+            event.target.classList.add("active");
+        }
+    </script>
+</body>
+</html>
